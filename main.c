@@ -2,49 +2,55 @@
 #include <stdlib.h>
 
 int main(){
-    int opcao1, opcao2, quant;
+    int opcao1, opcao2, opcao3, quant;
         opcao2 = 1;
-        printf("            PROGRAMA GERADOR DE OBRA DE ARTE:               \n");
-        printf("============================================================\n");
-        printf("Escolha o tipo de figura a ser usada para criar a obra:    |\n");
-        printf("1 - Asterisco Simples.                                     |\n");
-        printf("2 - Simbolo de Soma com Asteriscos.                        |\n");
-        printf("3 - Letra X com Asteriscos.                                |\n");
-        printf("4 - Figuras Aleatórias.                                    |\n");
-        printf("5 - arvore                                                 |\n");
-        printf("============================================================\n");
+        printf("-----------------GERADOR DE OBRA DE ARTE!!!------------------\n");
+        printf("==============================================================\n");
+        printf("| Escolha o tipo de figura a ser usada para criar a obra:    |\n");
+        printf("| 1 - Asterisco Simples.                                     |\n");
+        printf("| 2 - Simbolo de Soma com Asteriscos.                        |\n");
+        printf("| 3 - Letra X com Asteriscos.                                |\n");
+        printf("| 4 - Figuras Aleatórias.                                    |\n");
+        printf("| 5 - Árvore                                                 |\n");
+        printf("| 6 - Sair do programa.                                      |\n");
+        printf("==============================================================\n");
         printf("\n");
         printf("\n");
-    
         printf("Digite a opção de figura desejada: ");
         scanf("%d",&opcao1);
 
-        printf("Digite a quantidade de figuras (menor ou igual a zero para quantidade aleatória): ");
-        scanf("%d",&quant);
-        printf("\n");
-    while(1){
-        if(opcao1 == 6) //A opção 7 sai do programa.
-            break;
+        
+
+    while(1){           
         while (opcao2 == 1){
+
+            if(opcao1 == 6){
+                if(opcao3 == 1){
+                    printf("BYE!!!\n");
+                    break;
+                }
+            }
+
+            printf("Digite a quantidade de figuras (menor ou igual a zero para quantidade aleatória): ");
+            scanf("%d",&quant);
+            printf("\n");
+            
             if(quant > 100 && ( opcao1 == 1 || opcao1 == 2 || opcao1 == 3 || opcao1 == 4)){
                 quant = 100;
             }
-            else if(quant > 100 && (opcao1 == 5 || opcao1 == 6)){
-                quant = (rand()%30)+1;
+            else if(quant > 100 && (opcao1 == 5)){
+                quant = (rand()%60)+1;
             }
             else if(quant <= 0){
                 if(opcao1 == 5){
-                    quant = (rand()%30)+1;
-                }
-                else if(opcao1 == 6){
-                    quant = (rand()%35)+1;
+                    quant = (rand()%60)+1;
                 }
                 else{
                     quant = (rand()%100)+1;
                 }
             }
 
-            //Quadro -> Construção
+            //Quadro
             int i,j;
             char quadro[20][80];
             for(i = 0; i < 20; i ++){
@@ -66,8 +72,10 @@ int main(){
                 case 1:
                     for (var1 = 0; var1 < quant; var1++)
                     {
+
                         var2 = (rand() % 18) + 1;
                         var3 = (rand() % 78) + 1;
+
                         while (quadro[var2][var3] == '*')
                         {
                             var2 = (rand() % 18) + 1;
@@ -97,11 +105,15 @@ int main(){
                         for(var1 = 0; var1 < quant; var1++){
                             var2 = (rand()% 18) + 1;
                             var3 = (rand()% 78) + 1;
+                            
                             while (quadro[var2][var3] == '*' || quadro[var2+1][var3] == '*' || quadro[var2-1][var3] == '*' 
-                            || quadro[var2][var3+1] == '*' || quadro[var2][var3-1] == '*' || var2-1==0 || var2+1==19 || var3-1 ==0 || var3+1 == 79){ 
+                            || quadro[var2][var3+1] == '*' || quadro[var2][var3-1] == '*' || 
+                            var2-1==0 || var2+1==19 || var3-1 ==0 || var3+1 == 79){ 
                             var2 = (rand()% 18) + 1;
                             var3 = (rand()% 78) + 1;
                             }
+
+                            
                             quadro[var2][var3] = '*';
                             quadro[var2 - 1][var3 + 1] = '*';
                             quadro[var2 - 1][var3 - 1] = '*';
@@ -155,9 +167,11 @@ int main(){
                             var3 = (rand()% 78) + 1;
 
                             while (quadro[var2+1][var3] == '*' || quadro[var2+2][var3] == '*' || quadro[var2+2][var3] == '*' || quadro[var2+2][var3-1] == '*' ||
-                            quadro[var2+3][var3] == '*' || quadro[var2+3][var3-1] == '*' || quadro[var2+3][var3-2] == '*' || quadro[var2+3][var3+1] == '*' || quadro[var2+3][var3+2] == '*' ||
-                            quadro[var2+4][var3] == '|' || var3 - 1 == 0 || var3 == 0 || var3 + 1 == 0 || var3 - 2 == 0 || var3 + 2 == 0 ||var3 - 1 == 79 || var3 == 79 || var3 + 1 == 79 || var3 - 2 == 79 || var3 + 2 == 79
-                            || var2 == 0 || var2+1 == 0 || var2+2 == 0 || var2+3 == 0 || var2+4 == 0 || var2 == 19 || var2+1 == 19 || var2+2 == 19 || var2+3 == 19 || var2+4 == 19){
+                            quadro[var2+3][var3] == '*' || quadro[var2+3][var3-1] == '*' || quadro[var2+3][var3-2] == '*' || quadro[var2+3][var3+1] == '*' || 
+                            quadro[var2+3][var3+2] == '*' || quadro[var2+4][var3] == '|' || var3 - 1 == 0 || var3 == 0 ||
+                            var3 + 1 == 0 || var3 - 2 == 0 || var3 + 2 == 0 ||var3 - 1 == 79 || var3 == 79 || var3 + 1 == 79 || 
+                            var3 - 2 == 79 || var3 + 2 == 79 || var2 == 0 || var2+1 == 0 || var2+2 == 0 || var2+3 == 0 || var2+4 == 0 ||
+                            var2 == 19 || var2+1 == 19 || var2+2 == 19 || var2+3 == 19 || var2+4 == 19){
                                 var2 = (rand()% 18) + 1;
                                 var3 = (rand()% 78) + 1;
                             }
@@ -185,29 +199,21 @@ int main(){
         printf("\n");
         printf("\n");
 
-            printf("----------------GERADOR DE OBRA DE ARTE!!!-----------------\n");
-            printf("============================================================\n");
-            printf("Escolha o tipo de figura a ser usada para criar a obra:    |\n");
-            printf("1 - Asterisco Simples.                                     |\n");
-            printf("2 - Simbolo de Soma com Asteriscos.                        |\n");
-            printf("3 - Letra X com Asteriscos.                                |\n");
-            printf("4 - Figuras Aleatórias.                                    |\n");
-            printf("5 - Árvore                                                 |\n");
-            printf("6 - Sair do programa.                                      |\n");
-            printf("============================================================\n");
+            printf("-----------------GERADOR DE OBRA DE ARTE!!!------------------\n");
+            printf("==============================================================\n");
+            printf("| Escolha o tipo de figura a ser usada para criar a obra:    |\n");
+            printf("| 1 - Asterisco Simples.                                     |\n");
+            printf("| 2 - Simbolo de Soma com Asteriscos.                        |\n");
+            printf("| 3 - Letra X com Asteriscos.                                |\n");
+            printf("| 4 - Figuras Aleatórias.                                    |\n");
+            printf("| 5 - Árvore                                                 |\n");
+            printf("| 6 - Sair do programa.                                      |\n");
+            printf("==============================================================\n");
             printf("\n");
             printf("\n");
         
             printf("Digite a opção de figura desejada: ");
             scanf("%d",&opcao1);
-
-            if(opcao1 == 6){
-                break;
-            }
-
-            printf("Digite a quantidade de figuras (menor ou igual a zero para quantidade aleatória): ");
-            scanf("%d",&quant);
-            printf("\n");
         }
     }
 
